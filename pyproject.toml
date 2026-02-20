@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "aws-iam-auditor"
 version = "0.1.0"
 description = "Automated AWS IAM misconfiguration scanner"
-authors = [ { name = "master-coder1998", url = "https://github.com/master-coder1998" } ]
+authors = [ { name = "Ankita Dixit", url = "https://github.com/master-coder1998" } ]
 readme = "README.md"
 requires-python = ">=3.11"
 

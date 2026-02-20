@@ -150,8 +150,8 @@ Use the Terraform module to deploy a least-privilege role automatically.
 
 ## 👤 Author
 
-**master-coder1998** — Cloud Security Engineer  
-- GitHub: [master-coder1998](https://github.com/master-coder1998)
+**Ankita Dixit** — Cloud Security Engineer  
+- GitHub: [master-coder1998](https://github.com/master-coder1998)  
 - LinkedIn: [ankita-dixit-8892b8185](https://www.linkedin.com/in/ankita-dixit-8892b8185/)
 
 ---

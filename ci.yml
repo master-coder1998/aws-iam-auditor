@@ -1,0 +1,81 @@
+name: IAM Auditor CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run audit every day at 08:00 UTC
+    - cron: "0 8 * * *"
+
+jobs:
+  # ── Job 1: Run Tests ────────────────────────────────────────
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests with pytest
+        run: pytest tests/ -v --tb=short
+
+  # ── Job 2: Lint ─────────────────────────────────────────────
+  lint:
+    name: Lint with flake8
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install flake8
+      - run: flake8 auditor/ main.py --max-line-length=120 --ignore=E501
+
+  # ── Job 3: Scheduled IAM Audit (prod) ───────────────────────
+  audit:
+    name: Scheduled IAM Security Audit
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    needs: test
+
+    permissions:
+      id-token: write   # Required for OIDC
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_AUDITOR_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Run IAM audit and save reports
+        run: python main.py --format all --output-dir ./reports
+
+      - name: Upload reports as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: iam-audit-report-${{ github.run_id }}
+          path: reports/
+          retention-days: 30

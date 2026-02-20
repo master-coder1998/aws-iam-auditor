@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aws-iam-auditor"
+version = "0.1.0"
+description = "Automated AWS IAM misconfiguration scanner"
+authors = [ { name = "master-coder1998", url = "https://github.com/master-coder1998" } ]
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"

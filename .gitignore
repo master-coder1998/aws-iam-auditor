@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+env/
+
+# Reports (contain sensitive data — never commit)
+reports/
+*.html
+iam_audit_report.json
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+
+# AWS credentials — NEVER commit
+.aws/
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

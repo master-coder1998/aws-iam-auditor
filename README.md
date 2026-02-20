@@ -40,10 +40,17 @@ aws-iam-auditor/
 │   └── test_auditor.py    # Unit tests (mocked boto3)
 ├── terraform/
 │   └── main.tf            # Least-privilege IAM role via Terraform
-├── .github/workflows/
-│   └── ci.yml             # GitHub Actions — tests + scheduled audit
+├── .github/
+│   └── workflows/
+│       └── ci.yml         # GitHub Actions — tests + scheduled audit
+├── .githubignore?         # (optional local ignore for CI)
 ├── main.py                # CLI entry point
-├── requirements.txt
+├── requirements.txt       # Python dependencies
+├── pyproject.toml         # Project metadata / build config
+├── LICENSE
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+├── CHANGELOG.md
 ├── .gitignore
 └── README.md
 ```

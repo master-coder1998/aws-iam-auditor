@@ -10,8 +10,6 @@ from unittest.mock import patch, MagicMock
 import datetime
 
 # ── Import auditor ────────────────────────────────────────────
-import sys
-sys.path.insert(0, ".")
 from auditor.iam_auditor import IAMAuditor
 
 

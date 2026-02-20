@@ -318,7 +318,7 @@ class IAMAuditor:
         reader = csv.DictReader(io.StringIO(content))
         return list(reader)
 
-    # ── Run All Checks ───────────────────────────────────────────
+    # ── Run All Checks ─────────────────────────────────────────--
 
     def run_all(self) -> dict:
         """Run every audit check and return full results."""

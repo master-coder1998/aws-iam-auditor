@@ -1,8 +1,8 @@
-# ─────────────────────────────────────────────────────────────
-# AWS IAM Security Auditor — Terraform IaC
-# Creates a least-privilege IAM role for the auditor to run with.
-# Author: Ankita Dixit | github.com/master-coder1998
-# ─────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// AWS IAM Security Auditor — Terraform IaC
+// Creates a least-privilege IAM role for the auditor to run with.
+// Author: Ankita Dixit | github.com/master-coder1998
+// ─────────────────────────────────────────────────────────────
 
 terraform {
   required_version = ">= 1.3"
